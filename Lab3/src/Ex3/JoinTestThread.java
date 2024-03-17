@@ -6,7 +6,6 @@ class JoinTestThread extends Thread{
     Thread t;
     String n;
 
-    static int sum = 0;
     int num;
 
     public int getNum(){
@@ -27,15 +26,20 @@ class JoinTestThread extends Thread{
 
         // Generate a random number greater than 20000
         int randomNumber = random.nextInt(Integer.MAX_VALUE - num) + num + 1;
-
+        System.out.println("random number: " + randomNumber);
         int div = 2;
         int numDiv = 2;
+        int copy = randomNumber;
 
         while(div <= randomNumber/2){
-            if(randomNumber % div ==0)
+            if(randomNumber % div == 0)
+            {
                 numDiv++;
-            while(randomNumber % div ==0)
-                randomNumber /= div;
+                System.out.println(div + " for " + randomNumber);
+            }
+
+            while(copy % div == 0)
+                copy /= div;
 
             div++;
         }
@@ -51,7 +55,7 @@ class JoinTestThread extends Thread{
             if (t != null) t.join();
             System.out.println("Thread "+n+" executing operation.");
             int numDiv = getNumDiv(getNum());
-            JoinTestThread.sum += numDiv;
+            Main.sum += numDiv;
             System.out.println("Thread "+n+" has terminated operation.");
 
         }

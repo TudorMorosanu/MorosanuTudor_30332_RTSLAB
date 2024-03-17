@@ -18,7 +18,8 @@ public class RThread extends Thread{
                 System.out.println(readMsg);
                 Thread.sleep(3000);
 
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
 
                 e.printStackTrace();
 

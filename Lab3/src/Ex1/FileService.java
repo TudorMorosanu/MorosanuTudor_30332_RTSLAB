@@ -25,17 +25,22 @@ public class FileService {
         }
     }
 
-    public synchronized void write(String msg) {
+    public void write(String msg) {
         Date date = new Date(System.currentTimeMillis());
-        out.println("Date: " + date);
-        out.println("Message: " + msg);
-        out.flush();
+        synchronized(this){
+            out.println("Date: " + date);
+            out.println("Message: " + msg);
+            out.flush();
+        }
     }
 
-    public synchronized String read() throws IOException {
+    public String read() throws IOException {
         String iterator, last = "no message to read";
-        while ((iterator = in.readLine()) != null) {
-            last = new Date(System.currentTimeMillis()) + " - " + iterator;
+
+        synchronized(this){
+            while ((iterator = in.readLine()) != null) {
+                last = new Date(System.currentTimeMillis()) + " - " + iterator;
+            }
         }
         return last;
     }
