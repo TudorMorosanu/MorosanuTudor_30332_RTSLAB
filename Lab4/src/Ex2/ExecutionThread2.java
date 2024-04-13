@@ -18,10 +18,10 @@ public class ExecutionThread2 extends Thread {
 
     public void run() {
         System.out.println(this.getName() + " 2sync - STATE 1");
-        try {
-            Thread.sleep(Math.round(Math.random() * (sleep_max - sleep_min) + sleep_min) * 500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        int k = (int) Math.round(Math.random() * (sleep_max - sleep_min) + sleep_min);
+        for (int i = 0; i < k * 100000; i++) {
+            i++;
+            i--;
         }
         System.out.println(this.getName() + " 2sync - STATE 2");
         synchronized(monitor1) {

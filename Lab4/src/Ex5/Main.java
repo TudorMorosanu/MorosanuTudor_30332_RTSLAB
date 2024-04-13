@@ -12,21 +12,12 @@ public class Main {
 
         // test comment to see that repo is ok
         ExecutionThread1 thread1 = new ExecutionThread1(lock1, lock2, t1);
-        ExecutionThread2 thread2 = new ExecutionThread2(lock1, t2);
-        ExecutionThread2 thread3 = new ExecutionThread2(lock2, t3);
+        ExecutionThread2 thread2 = new ExecutionThread2(lock1, thread1, t2);
+        ExecutionThread2 thread3 = new ExecutionThread2(lock2, thread1, t3);
 
         thread1.start();
         thread2.start();
         thread3.start();
-
-        try{
-            thread1.join();
-            thread2.join();
-            thread3.join();
-        }
-        catch (InterruptedException e){
-            e.printStackTrace();
-        }
 
     }
 }

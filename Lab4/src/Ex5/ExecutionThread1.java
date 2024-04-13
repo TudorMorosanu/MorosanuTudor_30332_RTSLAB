@@ -19,10 +19,10 @@ public class ExecutionThread1 extends Thread {
         }
 
         System.out.println(this.getName() + " - STATE 2");
-        try {
-            Thread.sleep(Math.round(Math.random() * (times[2] - times[1]) + times[1]) * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        int k = (int) Math.round(Math.random() * (times[2] - times[1]) + times[1]);
+        for (int i = 0; i < k * 100000; i++) {
+            i++;
+            i--;
         }
         synchronized (lock1) {
             lock1.notify();

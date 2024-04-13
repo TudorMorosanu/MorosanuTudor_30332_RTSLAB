@@ -15,18 +15,19 @@ public class ExecutionThread extends Thread{
 
     public void run(){
         System.out.println(this.getName() + " - STATE 1");
-        try {
-            Thread.sleep(Math.round(Math.random() * (times[1] - times[0]) + times[0]) * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        int k = (int) Math.round(Math.random() * (times[1] - times[0]) + times[0]);
+        for (int i = 0; i < k * 100000; i++) {
+            i++;
+            i--;
         }
-        System.out.println(this.getName() + " - STATE 2");
+
         synchronized (monitor) {
             synchronized (monitorSh){
-                try {
-                    Thread.sleep(Math.round(Math.random() * (times[3] - times[2]) + times[2]) * 1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                System.out.println(this.getName() + " - STATE 2");
+                k = (int) Math.round(Math.random() * (times[3] - times[2]) + times[2]);
+                for (int i = 0; i < k * 100000; i++) {
+                    i++;
+                    i--;
                 }
             }
             System.out.println(this.getName() + " - STATE 3");
