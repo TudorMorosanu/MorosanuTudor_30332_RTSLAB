@@ -1,27 +1,27 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+class Fir
+Fir : ~name : int
+Fir : ~delay : int
+Fir : ~k : int
+Fir : ~permit : int
+Fir : ~s : Semaphore
+Fir : +Fir()
+Fir : +run() : void
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+class Thread
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+class Main
+Main : +main() : static void
 
-class ArrayList {
-Object[] elementData
-size()
-}
+class Semaphore
+class InterruptedException
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
+Fir -|> Thread
+Fir -o Semaphore
+Fir -> InterruptedException
+
+Main -* Fir
 
 @enduml
