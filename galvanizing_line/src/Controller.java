@@ -26,8 +26,8 @@ public class Controller extends Thread {
 		t_o2 = new Controller_Transition_t_o2("t_o2", PH, 0);
 		t_o2.RobotPH = r.PH;// this transition has an output channel connected to the robot
 
-		System.out.println("Controller: Input p_i1 value");
-		this.PH.GetPlaceByName("p_i1").Set(Integer.parseInt(in.nextLine()));
+		//System.out.println("Controller: Input p_i1 value");
+		//this.PH.GetPlaceByName("p_i1").Set(Integer.parseInt(in.nextLine()));
 
 		while (!stop) {
 

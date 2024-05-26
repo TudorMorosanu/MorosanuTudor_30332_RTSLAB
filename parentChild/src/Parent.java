@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 import Interfaces.PlaceTemplate;
 
-public class Parent extends Thread {
+public class 	Parent extends Thread {
 
 	boolean stop = false;
 	public Child r;
